@@ -10,12 +10,13 @@ import {
     useRouteMatch,
 } from "react-router-dom";
 import {AuthPage} from "../../Pages/AuthPage";
+import {DocumentsPage} from "../../Pages/DocumentsPage";
 
 const NavbarLayout = ({info}) => {
     return (
         <Router>
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
                     <div className="container-fluid">
                         <a className="navbar-brand " href="#"><em>БыстрыйКонтракт</em></a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -27,6 +28,10 @@ const NavbarLayout = ({info}) => {
                 </nav>
             </div>
             <Switch>
+                <Route
+                    path="/documents"
+                    render={({ match }) => <DocumentsPage />}
+                />
                 <Route
                     path="/"
                     render={({ match }) => <AuthPage />}
