@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import {AuthPage} from "../../Pages/AuthPage";
 import {DocumentsPage} from "../../Pages/DocumentsPage";
+import {CreateDocumentPage} from "../../Pages/CreateDocumentPage";
 
 const NavbarLayout = ({info}) => {
     return (
@@ -18,7 +19,7 @@ const NavbarLayout = ({info}) => {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
                     <div className="container-fluid">
-                        <a className="navbar-brand " href="#"><em>БыстрыйКонтракт</em></a>
+                        <a className="navbar-brand "><em>БыстрыйКонтракт</em></a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                 aria-label="Toggle navigation">
@@ -28,6 +29,10 @@ const NavbarLayout = ({info}) => {
                 </nav>
             </div>
             <Switch>
+                <Route
+                    path="/documents/create"
+                    render={({ match }) => <CreateDocumentPage />}
+                />
                 <Route
                     path="/documents"
                     render={({ match }) => <DocumentsPage />}

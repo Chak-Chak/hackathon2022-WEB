@@ -1,6 +1,7 @@
 import React from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
 const AuthPageLayout = ({info}) => {
     console.log(info);
