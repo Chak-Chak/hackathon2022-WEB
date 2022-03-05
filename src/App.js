@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
         <Provider store={store}>
-            <Navbar /> ПРивет
+            <Navbar /> hrjtkjmft
         </Provider>
     </div>
   );
