@@ -17,7 +17,7 @@ import {updateGlobalAlertList, updateIsAuth} from "../../store/actions/authModal
 
 const NavbarLayout = ({info, updateIsAuth, updateGlobalAlertList}) => {
     useEffect(() => {
-
+        if (localStorage.getItem('accessToken') !== null) updateIsAuth(true);
     }, []);
     console.log(info);
     return (
