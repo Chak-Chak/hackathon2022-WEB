@@ -6,7 +6,7 @@ import {store} from "./store/mergeReducer";
 function App() {
   return (
     <div>
-        <Provider store={store}>
+        <Provider store={store}>хуй
             <Navbar />
         </Provider>
     </div>
