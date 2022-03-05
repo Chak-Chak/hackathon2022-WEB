@@ -12,37 +12,50 @@ import {
 import {AuthPage} from "../../Pages/AuthPage";
 import {DocumentsPage} from "../../Pages/DocumentsPage";
 import {CreateDocumentPage} from "../../Pages/CreateDocumentPage";
+import {Alerts} from "../Alerts/AlertList";
+import {updateIsAuth} from "../../store/actions/authModalActions";
 
-const NavbarLayout = ({info}) => {
+const NavbarLayout = ({info, updateIsAuth}) => {
+    useEffect(() => {
+
+    }, []);
+    console.log(info);
     return (
-        <Router>
-            <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
-                    <div className="container-fluid">
-                        <a className="navbar-brand "><em>БыстрыйКонтракт</em></a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"/>
-                        </button>
-                    </div>
-                </nav>
-            </div>
-            <Switch>
-                <Route
-                    path="/documents/create"
-                    render={({ match }) => <CreateDocumentPage />}
-                />
-                <Route
-                    path="/documents"
-                    render={({ match }) => <DocumentsPage />}
-                />
-                <Route
-                    path="/"
-                    render={({ match }) => <AuthPage />}
-                />
-            </Switch>
-        </Router>
+        <div>
+            <Router>
+                {!info.isAuth && <Redirect to="/" />}
+                <div>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                        <div className="container-fluid">
+                            <a className="navbar-brand "><em>БыстрыйКонтракт</em></a>
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"/>
+                            </button>
+                            {info.isAuth && <button className="btn btn-primary" onClick={() => {updateIsAuth(false); return <Redirect to="/" />}}>
+                                Выход
+                            </button>}
+                        </div>
+                    </nav>
+                </div>
+                <Switch>
+                    <Route
+                        path="/documents/create"
+                        render={({ match }) => <CreateDocumentPage />}
+                    />
+                    <Route
+                        path="/documents"
+                        render={({ match }) => <DocumentsPage />}
+                    />
+                    <Route
+                        path="/"
+                        render={({ match }) => <AuthPage />}
+                    />
+                </Switch>
+            </Router>
+            <Alerts />
+        </div>
     );
 };
 
@@ -53,7 +66,7 @@ const mapStateProps = (state) => {
 
 const mapDispatchProps = (dispatch) =>
     bindActionCreators(
-        {},
+        {updateIsAuth},
         dispatch
     );
 

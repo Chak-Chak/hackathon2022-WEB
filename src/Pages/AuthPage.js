@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
-import {fetchCreateToken, isLoginValidationError, setLoginRole} from "../store/actions/authModalActions";
+import {fetchCreateToken, isLoginValidationError, setLoginRole, updateIsAuth} from "../store/actions/authModalActions";
 import {DangerAlert} from "../components/Alerts/DangerAlert";
+import {LoginLoader} from "../UI/Loaders/loginLoader";
 
-const AuthPageLayout = ({info, isLoginValidationError, fetchCreateToken, setLoginRole}) => {
-    console.log(info);
+const AuthPageLayout = ({info, isLoginValidationError, fetchCreateToken, setLoginRole, updateIsAuth}) => {
     const [password, setPassword] = useState('');
     const validate = () => {
         if ((info.userRole === null) || (password.trim() === ''))
@@ -18,13 +18,16 @@ const AuthPageLayout = ({info, isLoginValidationError, fetchCreateToken, setLogi
             fetchCreateToken(info.userRole, password);
         }
     }
+    if (info.isAuth) {
+        return <Redirect to="/documents" />
+    }
     return (
         <div className="d-flex justify-content-center align-items-center w-100" style={{height: window.innerHeight-100}}>
             <div className="card w-25 p-3">
                 <div className="card-body">
                     <h5 className="card-title">Авторизация</h5>
                     <div className="input-group mt-4">
-                        <select className="form-select" defaultValue={null}
+                        <select className="form-select"
                                 onChange={(e) => setLoginRole(e.target.value)}>
                             <option value={null}>Выберите пользователя</option>
                             <option value={1}>Куратор контракта</option>
@@ -37,9 +40,15 @@ const AuthPageLayout = ({info, isLoginValidationError, fetchCreateToken, setLogi
                         <input type="password" aria-label="First name" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     {info.isLoginValidationError && <DangerAlert text='Некорректный ввод данных' fill='outlined'/>}
-                    <button className="btn btn-outline-primary w-100" onClick={() => {validate(); console.log(info)}}>
-                        Войти
-                    </button>
+                    {info.requestLoginError && <DangerAlert text='Неверный пароль' fill='outlined'/>}
+                    {info.isLoginLoading ?
+                        <div className="d-flex justify-content-center mt-3">
+                            <LoginLoader/>
+                        </div> :
+                        <button className="btn btn-outline-primary w-100 mt-1" onClick={() => validate()}>
+                            Войти
+                        </button>
+                    }
                 </div>
             </div>
         </div>
@@ -53,7 +62,7 @@ const mapStateProps = (state) => {
 
 const mapDispatchProps = (dispatch) =>
     bindActionCreators(
-        {isLoginValidationError, fetchCreateToken, setLoginRole},
+        {isLoginValidationError, fetchCreateToken, setLoginRole, updateIsAuth},
         dispatch
     );
 
