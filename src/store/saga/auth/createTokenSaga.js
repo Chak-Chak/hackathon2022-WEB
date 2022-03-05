@@ -1,14 +1,19 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import {FETCH_CREATE_TOKEN} from "../../types/authModalTypes";
-import {/*setRequestLoginError,*/ updateIsAuth, updateIsLoginLoading} from "../../actions/authModalActions";
-import {updateGlobalAlertList} from "../../actions/activePageActions";
+import {
+    setRequestLoginError,
+    updateGlobalAlertList,
+    updateIsAuth,
+    updateIsLoginLoading
+} from "../../actions/authModalActions";
+//import {updateGlobalAlertList} from "../../actions/activePageActions";
 
-const fetchCreateToken = (role, password) => {
+const fetchCreateToken = (roleId, password) => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     let raw = JSON.stringify({
-        "roleId": role,
+        "roleId": roleId,
         "password": password
     });
 
@@ -24,6 +29,7 @@ const fetchCreateToken = (role, password) => {
 
 function* fetchTokenCreateWorker(info) {
     yield put(updateIsLoginLoading(true));
+    console.log(info.userRole);
     const data = yield call(
         fetchCreateToken,
         info.userRole,
@@ -31,23 +37,19 @@ function* fetchTokenCreateWorker(info) {
     );
     if (data) {
         const json = yield call(() => new Promise((res) => res(data.json())));
-        //console.log(json); //DEBUG
         if (json.isError) {
-            //yield put(setRequestLoginError(true));
+            yield put(setRequestLoginError(true));
         } else {
             yield put(updateIsAuth(true));
-            //yield put(setRequestLoginError(false));
-            console.log(json);
+            yield put(setRequestLoginError(false));
             localStorage.setItem('accessToken', json.result);
-
+            yield put(updateGlobalAlertList({id:Math.random(), header: "Приветствуем", body: "Вы успешно авторизовались!"}))
         }
-        //alert( document.cookie );
         yield put(updateIsLoginLoading(false));
     }
     else {
         yield put(updateIsLoginLoading(false));
-        //yield put(updateIsLoginModalVisible(false));
-        //yield put(updateGlobalAlertList({id:Math.random(), header: "Whoops", body: "Something went wrong :("}))
+        yield put(updateGlobalAlertList({id:Math.random(), header: "Whoops", body: "Something went wrong :("}))
     }
 }
 

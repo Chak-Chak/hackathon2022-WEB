@@ -1,14 +1,18 @@
 import {
     IS_LOGIN_VALIDATION_ERROR,
-    SET_LOGIN_ROLE,
-    UPDATE_IS_AUTH, UPDATE_IS_LOGIN_LOADING
-
+    REMOVE_GLOBAL_ALERT,
+    SET_LOGIN_ROLE, SET_REQUEST_LOGIN_ERROR,
+    UPDATE_GLOBAL_ALERT_LIST,
+    UPDATE_IS_AUTH,
+    UPDATE_IS_LOGIN_LOADING,
 } from "../types/authModalTypes";
 const INITIAL_STATE = {
-    isAuth: true,
+    isAuth: false,
     userRole: null,
     isLoginLoading: false,
     isLoginValidationError: false,
+    globalAlertList: [],
+    requestLoginError: false,
 };
 
 export const authModalReducer = (state = INITIAL_STATE, action) =>
@@ -42,6 +46,21 @@ export const authModalReducer = (state = INITIAL_STATE, action) =>
             return {
                 ...state,
                 isLoginValidationError: action.value,
+            }
+        case UPDATE_GLOBAL_ALERT_LIST:
+            return {
+                ...state,
+                globalAlertList: state.globalAlertList.concat(action.info),
+            }
+        case REMOVE_GLOBAL_ALERT:
+            return {
+                ...state,
+                globalAlertList: state.globalAlertList.filter((alert) => alert.id !== action.id),
+            }
+        case SET_REQUEST_LOGIN_ERROR:
+            return {
+                ...state,
+                requestLoginError: action.value,
             }
         default:
             return state;

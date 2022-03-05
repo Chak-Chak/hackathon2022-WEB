@@ -5,8 +5,9 @@ import {Link, Redirect} from "react-router-dom";
 import {DocumentCard} from "../components/DocumentsPage/documentCard";
 
 const DocumentsPageLayout = ({info}) => {
-    if (!info.isAuth)
+    if (!info.isAuth){
         return <Redirect to="/"/>
+    }
     return (
         <div className="container d-flex justify-content-center align-items-center flex-wrap">
             <DocumentCard />
