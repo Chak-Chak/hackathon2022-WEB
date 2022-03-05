@@ -9,6 +9,7 @@ import {
     Redirect,
     useRouteMatch,
 } from "react-router-dom";
+import {AuthPage} from "../../Pages/AuthPage";
 
 const NavbarLayout = ({info}) => {
     return (
