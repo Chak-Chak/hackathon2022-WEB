@@ -1,8 +1,9 @@
 import React from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
-const AuthPageLayout = ({}) => {
+const AuthPageLayout = ({info}) => {
     return (
         <div className="d-flex justify-content-center align-items-center w-100" style={{height: window.innerHeight-100}}>
             <div className="card w-25 p-3">
