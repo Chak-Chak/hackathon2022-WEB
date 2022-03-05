@@ -2,17 +2,24 @@ import React, {useState} from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
-import {fetchCreateToken, isLoginValidationError, setLoginRole, updateIsAuth} from "../store/actions/authModalActions";
+import {
+    fetchCreateToken,
+    isLoginValidationError,
+    setLoginRole,
+    setRequestLoginError,
+    updateIsAuth
+} from "../store/actions/authModalActions";
 import {DangerAlert} from "../components/Alerts/DangerAlert";
 import {LoginLoader} from "../UI/Loaders/loginLoader";
 
-const AuthPageLayout = ({info, isLoginValidationError, fetchCreateToken, setLoginRole, updateIsAuth}) => {
+const AuthPageLayout = ({info, isLoginValidationError, fetchCreateToken, setLoginRole, updateIsAuth, setRequestLoginError}) => {
     const [password, setPassword] = useState('');
     const validate = () => {
         if ((info.userRole === null) || (password.trim() === ''))
         {
             //Ошибка ввода данных
             isLoginValidationError(true);
+            setRequestLoginError(false);
         } else {
             isLoginValidationError(false);
             fetchCreateToken(info.userRole, password);
@@ -37,7 +44,8 @@ const AuthPageLayout = ({info, isLoginValidationError, fetchCreateToken, setLogi
                     </div>
                     <div className="input-group mt-3 mb-3">
                         <span className="input-group-text w-25">Пароль</span>
-                        <input type="password" aria-label="First name" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" aria-label="First name" className="form-control" value={password}
+                               onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     {info.isLoginValidationError && <DangerAlert text='Некорректный ввод данных' fill='outlined'/>}
                     {info.requestLoginError && <DangerAlert text='Неверный пароль' fill='outlined'/>}
@@ -62,7 +70,7 @@ const mapStateProps = (state) => {
 
 const mapDispatchProps = (dispatch) =>
     bindActionCreators(
-        {isLoginValidationError, fetchCreateToken, setLoginRole, updateIsAuth},
+        {isLoginValidationError, fetchCreateToken, setLoginRole, updateIsAuth, setRequestLoginError},
         dispatch
     );
 

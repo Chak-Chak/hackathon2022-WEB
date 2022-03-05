@@ -13,9 +13,9 @@ import {AuthPage} from "../../Pages/AuthPage";
 import {DocumentsPage} from "../../Pages/DocumentsPage";
 import {CreateDocumentPage} from "../../Pages/CreateDocumentPage";
 import {Alerts} from "../Alerts/AlertList";
-import {updateIsAuth} from "../../store/actions/authModalActions";
+import {updateGlobalAlertList, updateIsAuth} from "../../store/actions/authModalActions";
 
-const NavbarLayout = ({info, updateIsAuth}) => {
+const NavbarLayout = ({info, updateIsAuth, updateGlobalAlertList}) => {
     useEffect(() => {
 
     }, []);
@@ -33,7 +33,9 @@ const NavbarLayout = ({info, updateIsAuth}) => {
                                     aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"/>
                             </button>
-                            {info.isAuth && <button className="btn btn-primary" onClick={() => {updateIsAuth(false); return <Redirect to="/" />}}>
+                            {info.isAuth && <button className="btn btn-outline-primary" onClick={() => {updateIsAuth(false);
+                                updateGlobalAlertList({id:Math.random(), header: "Уже уходите? :(", body: "До скорой встречи!"});
+                                return <Redirect to="/" />;}}>
                                 Выход
                             </button>}
                         </div>
@@ -66,7 +68,7 @@ const mapStateProps = (state) => {
 
 const mapDispatchProps = (dispatch) =>
     bindActionCreators(
-        {updateIsAuth},
+        {updateIsAuth, updateGlobalAlertList},
         dispatch
     );
 
