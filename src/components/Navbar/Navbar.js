@@ -13,7 +13,9 @@ const NavbarLayout = ({info}) => {
                             aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-
+                    <div>
+                        Кнопка
+                    </div>
                 </div>
             </nav>
         </div>
