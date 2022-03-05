@@ -7,7 +7,7 @@ import {
     UPDATE_IS_LOGIN_LOADING,
 } from "../types/authModalTypes";
 const INITIAL_STATE = {
-    isAuth: false,
+    isAuth: true,
     userRole: null,
     isLoginLoading: false,
     isLoginValidationError: false,

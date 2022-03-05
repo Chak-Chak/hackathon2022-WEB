@@ -10,7 +10,8 @@ const CreateDocumentPageLayout = ({info}) => {
 
     const [charges, setCharges] = useState([]);
     const [charge, setCharge] = useState({name:'', units:'',number:'',cost:'',summary:''});
-    console.log(charges)
+
+
 
     if (!info.isAuth)
         return <Redirect to="/"/>
@@ -26,7 +27,7 @@ const CreateDocumentPageLayout = ({info}) => {
                         <input type="number" className="form-control" />
                     </div>
                     <div className="input-group mb-3">
-                        <span className="input-group-text w-50 d-flex justify-content-center">Дата заключениея контракта</span>
+                        <span className="input-group-text w-50 d-flex justify-content-center">Дата заключения контракта</span>
                         <input type="text" className="form-control" />
                     </div>
                     <div className="input-group mb-3">
@@ -134,6 +135,174 @@ const CreateDocumentPageLayout = ({info}) => {
                                     </div>
                                 )
                             })}
+                        </div>
+                    </div>
+                    <div className="input-group mb-3">
+                        <div className="input-group-text w-100 d-flex justify-content-center rounded mb-1">Поля в соответствии с выпиской банка</div>
+                            <div className="d-flex flex-column w-100 mb-1">
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text w-50 d-flex justify-content-center">
+                                        Исполнителя №
+                                    </span>
+                                    <input type="text" className="form-control" />
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text w-50 d-flex justify-content-center">
+                                        Наименование банка
+                                    </span>
+                                    <input type="text" className="form-control" />
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text w-50 d-flex justify-content-center">
+                                        ИНН
+                                    </span>
+                                    <input type="number" className="form-control" />
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text w-50 d-flex justify-content-center">
+                                        КПП
+                                    </span>
+                                    <input type="number" className="form-control" />
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text w-50 d-flex justify-content-center">
+                                        БИК
+                                    </span>
+                                    <input type="number" className="form-control" />
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text w-50 d-flex justify-content-center">
+                                        Р/сч.
+                                    </span>
+                                    <input type="number" className="form-control" />
+                                </div>
+                                <div className="input-group mb-1">
+                                    <span className="input-group-text w-50 d-flex justify-content-center">
+                                        К/сч.
+                                    </span>
+                                    <input type="number" className="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-50 d-flex justify-content-center">Источник финансирования</span>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-50 d-flex justify-content-center text-wrap" style={{height: 70}}>Дата начала оказания услугсоответствии со сроками, указанными в Техническом задании (Приложение 1 к контракту) в столбце «График оказания услуг»
+</span>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-50 d-flex justify-content-center text-wrap" style={{height: 70}}>
+                            Дата окончания оказания услуг соответствии со сроками, указанными в Техническом задании (Приложение 1 к контракту) в столбце «График оказания услуг»
+</span>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-50 d-flex justify-content-center text-wrap" style={{height: 70}}>
+                            Конечный срок действия Контракта с учетом
+                            сроков всех промежуточных этапов, указанных в контракте
+                        </span>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-50 d-flex justify-content-center">
+                            Дата, с которой начинается оказание услуг
+                        </span>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-50 d-flex justify-content-center text-wrap" style={{height: 70}}>
+                            Лицевой счет Заказчика, соответствующий источнику финансирования, указанному в п.2.6 Контракта.
+                        </span>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-50 d-flex justify-content-center text-wrap" style={{height: 70}}>
+                            Должность и ФИО лица, уполномоченного на подписание Контракта со стороны Заказчика.
+                        </span>
+                        <input type="text" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text w-100 d-flex justify-content-center mb-1">
+                            Поля в соответствии с документами Исполнителя
+                        </span>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">ФИО</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Серия паспорта</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Номер паспорта</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Дата выдачи</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Код подразделения</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Кем выдан</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Номер страхового свидетельства ПФ</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Индекс места регистрации</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Регион места регистрации</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Город места регистрации</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">ОКТМО</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Улица</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Дом</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Корпус</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Квартира</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Номер телефона</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Адресс электронной почты</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">ИНН</span>
+                            <input type="text" className="form-control" />
+                        </div>
+                        <div className="input-group mb-1">
+                            <span className="input-group-text w-50 d-flex justify-content-center">Дата постановки на учёт</span>
+                            <input type="text" className="form-control" />
                         </div>
                     </div>
                 </div>
