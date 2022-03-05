@@ -1,5 +1,5 @@
 import {
-    SET_LOGIN_PASSWORD,
+    IS_LOGIN_VALIDATION_ERROR,
     SET_LOGIN_ROLE,
     UPDATE_IS_AUTH, UPDATE_IS_LOGIN_LOADING
 
@@ -7,8 +7,8 @@ import {
 const INITIAL_STATE = {
     isAuth: true,
     userRole: null,
-    password: '',
     isLoginLoading: false,
+    isLoginValidationError: false,
 };
 
 export const authModalReducer = (state = INITIAL_STATE, action) =>
@@ -33,15 +33,15 @@ export const authModalReducer = (state = INITIAL_STATE, action) =>
                 ...state,
                 userRole: action.value,
             }
-        case SET_LOGIN_PASSWORD:
-            return {
-                ...state,
-                password: action.value,
-            }
         case UPDATE_IS_LOGIN_LOADING:
             return {
                 ...state,
                 isLoginLoading: action.value,
+            }
+        case IS_LOGIN_VALIDATION_ERROR:
+            return {
+                ...state,
+                isLoginValidationError: action.value,
             }
         default:
             return state;

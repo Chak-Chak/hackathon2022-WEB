@@ -1,6 +1,5 @@
 import {
-    FETCH_CREATE_TOKEN,
-    SET_LOGIN_PASSWORD,
+    FETCH_CREATE_TOKEN, IS_LOGIN_VALIDATION_ERROR,
     SET_LOGIN_ROLE,
     UPDATE_IS_AUTH,
     UPDATE_IS_LOGIN_LOADING
@@ -16,11 +15,6 @@ export const setLoginRole = (value) => ({
     value
 });
 
-export const setLoginPassword = (value) => ({
-    type: SET_LOGIN_PASSWORD,
-    value
-});
-
 export const updateIsLoginLoading = (value) => ({
     type: UPDATE_IS_LOGIN_LOADING,
     value
@@ -30,4 +24,9 @@ export const fetchCreateToken = (role, password) => ({
     type: FETCH_CREATE_TOKEN,
     role,
     password
-})
+});
+
+export const isLoginValidationError = (value) => ({
+   type: IS_LOGIN_VALIDATION_ERROR,
+   value
+});
