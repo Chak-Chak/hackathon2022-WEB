@@ -1,6 +1,6 @@
 import { Alert } from "@mui/material";
 import React from "react";
-import {DANGER_COLOR} from "../../themes";
+import { DANGER_COLOR } from "../../themes";
 
 export const DangerAlert = ({ text, fill, wrapStyles, fontStyles }) => {
     return (

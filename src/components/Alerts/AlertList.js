@@ -1,8 +1,8 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {removeGlobalAlert} from "../../store/actions/authModalActions";
-import {GlobalAlert} from "./GlobalAlert";
+import { removeGlobalAlert } from "../../store/actions/authModalActions";
+import { GlobalAlert } from "./GlobalAlert";
 
 const AlertLayout = ({ info, removeGlobalAlert }) => {
     return (
@@ -33,7 +33,4 @@ const mapDispatchToProps = (dispatch) =>
         },
         dispatch
     );
-export const Alerts = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(AlertLayout);
+export const Alerts = connect(mapStateToProps, mapDispatchToProps)(AlertLayout);

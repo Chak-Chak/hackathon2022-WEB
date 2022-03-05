@@ -1,6 +1,6 @@
 import { Alert } from "@mui/material";
 import React from "react";
-import {INFO_COLOR} from "../../themes";
+import { INFO_COLOR } from "../../themes";
 
 export const InfoAlert = ({ text, fill, wrapStyles, fontStyles }) => {
     return (

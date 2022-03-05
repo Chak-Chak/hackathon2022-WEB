@@ -1,6 +1,6 @@
 import { Alert } from "@mui/material";
 import React from "react";
-import {SUCCESS_COLOR} from "../../themes";
+import { SUCCESS_COLOR } from "../../themes";
 
 export const SuccessAlert = ({ text, fill, wrapStyles, fontStyles }) => {
     return (

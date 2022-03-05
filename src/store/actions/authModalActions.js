@@ -2,36 +2,37 @@ import {
     FETCH_CREATE_TOKEN,
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT,
-    SET_LOGIN_ROLE, SET_REQUEST_LOGIN_ERROR,
+    SET_LOGIN_ROLE,
+    SET_REQUEST_LOGIN_ERROR,
     UPDATE_GLOBAL_ALERT_LIST,
     UPDATE_IS_AUTH,
-    UPDATE_IS_LOGIN_LOADING
+    UPDATE_IS_LOGIN_LOADING,
 } from "../types/authModalTypes";
 
 export const updateIsAuth = (isAuth) => ({
-   type: UPDATE_IS_AUTH,
-    isAuth
+    type: UPDATE_IS_AUTH,
+    isAuth,
 });
 
 export const setLoginRole = (value) => ({
-    type:SET_LOGIN_ROLE,
-    value
+    type: SET_LOGIN_ROLE,
+    value,
 });
 
 export const updateIsLoginLoading = (value) => ({
     type: UPDATE_IS_LOGIN_LOADING,
-    value
+    value,
 });
 
 export const fetchCreateToken = (userRole, password) => ({
     type: FETCH_CREATE_TOKEN,
     userRole,
-    password
+    password,
 });
 
 export const isLoginValidationError = (value) => ({
-   type: IS_LOGIN_VALIDATION_ERROR,
-   value
+    type: IS_LOGIN_VALIDATION_ERROR,
+    value,
 });
 
 export const updateGlobalAlertList = (info) => ({
@@ -41,10 +42,10 @@ export const updateGlobalAlertList = (info) => ({
 
 export const removeGlobalAlert = (id) => ({
     type: REMOVE_GLOBAL_ALERT,
-    id
+    id,
 });
 
 export const setRequestLoginError = (value) => ({
     type: SET_REQUEST_LOGIN_ERROR,
-    value
+    value,
 });
