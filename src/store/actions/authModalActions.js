@@ -2,12 +2,16 @@ import {
     FETCH_CREATE_TOKEN,
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT,
-    SET_LOGIN_ROLE,
+    SET_LOGIN_ROLE, SET_MODAL,
     SET_REQUEST_LOGIN_ERROR,
     UPDATE_GLOBAL_ALERT_LIST,
     UPDATE_IS_AUTH,
     UPDATE_IS_LOGIN_LOADING,
 } from "../types/authModalTypes";
+
+export const setModal = (value) => ({
+    type: SET_MODAL, value
+})
 
 export const updateIsAuth = (isAuth) => ({
     type: UPDATE_IS_AUTH,

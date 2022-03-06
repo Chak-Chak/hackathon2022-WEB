@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import {setModal} from "../store/actions/authModalActions";
+import {Modal} from "../components/Modal/Modal";
 
-const CreateDocumentPageLayout = ({ info }) => {
+const CreateDocumentPageLayout = ({ info, setModal }) => {
+    const [redirectBack, setRedirectBack] = useState(false);
     const [services, setServices] = useState([]);
     const [service, setService] = useState("");
 
@@ -61,6 +64,9 @@ const CreateDocumentPageLayout = ({ info }) => {
         dateLast: "",
     });
 
+    if (redirectBack)
+        return(<Redirect to="/documents" />)
+
     const validate = () => {
         const result = {
             1: one,
@@ -84,16 +90,21 @@ const CreateDocumentPageLayout = ({ info }) => {
             },
             14: fourteen
         }
-        console.log(result)
+        setRedirectBack(true);
     }
 
     if (!info.isAuth) return <Redirect to="/" />;
     return (
         <div className="d-flex justify-content-center">
+            {info.modalVisible ? <Modal/>:
             <div className="card w-75">
-                <div className="card-header text-center">
-                    Форма контракта гражданско-правового характера на оказание
-                    услуг с физическими лицами
+                <div className="card-header d-flex justify-content-between align-items-center">
+                    <div>Форма контракта гражданско-правового характера на оказание
+                        услуг с физическими лицами</div>
+                    <div
+                        className="btn btn-outline-secondary"
+                        onClick={()=>setModal(true)}
+                    >Назад</div>
                 </div>
                 <div className="card-body">
                     <div className="input-group mb-3">
@@ -105,6 +116,8 @@ const CreateDocumentPageLayout = ({ info }) => {
                             onChange={(e) => setOne(e.target.value)}
                             type="number"
                             className="form-control"
+                            disabled={info.userRole!==2}
+                            placeholder={info.userRole!==2 && "Заполняется сотрудник организации закупок"}
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -116,6 +129,8 @@ const CreateDocumentPageLayout = ({ info }) => {
                             onChange={(e) => setTwo(e.target.value)}
                             type="text"
                             className="form-control"
+                            disabled={info.userRole!==2}
+                            placeholder={info.userRole!==2 && "Заполняется сотрудник организации закупок"}
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -201,6 +216,8 @@ const CreateDocumentPageLayout = ({ info }) => {
                             value={five}
                             onChange={(e) => setFive(e.target.value)}
                             className="form-control text-wrap"
+                            disabled={info.userRole!==2}
+                            placeholder={info.userRole!==2 && "Заполняется сотрудник организации закупок"}
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -213,6 +230,8 @@ const CreateDocumentPageLayout = ({ info }) => {
                             onChange={(e) => setSix(e.target.value)}
                             type="number"
                             className="form-control text-wrap"
+                            disabled={info.userRole!==3}
+                            placeholder={info.userRole!==3 && "Заполняется сотрудник планово-экономического отдела"}
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -220,6 +239,11 @@ const CreateDocumentPageLayout = ({ info }) => {
                             Расходы, входящие в стоимость услуг
                         </div>
                         <div className="d-flex flex-column w-100">
+                            {info.userRole!==3 ? <input
+                                className="form-control text-wrap text-center"
+                                disabled={info.userRole!==3}
+                                placeholder={info.userRole!==3 && "Заполняет сотрудник планово-экономического отдела"}
+                            />:
                             <div className="d-flex w-100 mb-1">
                                 <input
                                     placeholder="Наименование"
@@ -306,7 +330,7 @@ const CreateDocumentPageLayout = ({ info }) => {
                                 >
                                     Добавить
                                 </div>
-                            </div>
+                            </div>}
                             {charges.map((charge) => {
                                 return (
                                     <div className="d-flex align-items-center mb-1">
@@ -491,6 +515,8 @@ const CreateDocumentPageLayout = ({ info }) => {
                             onChange={(e) => setNine(e.target.value)}
                             type="text"
                             className="form-control"
+                            disabled={info.userRole!==3}
+                            placeholder={info.userRole!==3 && "Заполняется сотрудник планово-экономического отдела"}
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -540,6 +566,9 @@ const CreateDocumentPageLayout = ({ info }) => {
                             onChange={(e) => setEleven(e.target.value)}
                             type="text"
                             className="form-control"
+                            disabled={info.userRole!==2}
+                            placeholder={info.userRole!==2 && "Заполняется сотрудник организации закупок"}
+
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -551,6 +580,8 @@ const CreateDocumentPageLayout = ({ info }) => {
                             onChange={(e) => setTwelve(e.target.value)}
                             type="text"
                             className="form-control"
+                            disabled={info.userRole!==2}
+                            placeholder={info.userRole!==2 && "Заполняется сотрудник организации закупок"}
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -566,6 +597,8 @@ const CreateDocumentPageLayout = ({ info }) => {
                             onChange={(e) => setThirdFirst(e.target.value)}
                             type="text"
                             className="form-control"
+                            disabled={info.userRole!==2}
+                            placeholder={info.userRole!==2 && "Заполняется сотрудник организации закупок"}
                         />
                     </div>
                     <div className="input-group mb-3">
@@ -898,7 +931,7 @@ const CreateDocumentPageLayout = ({ info }) => {
                         Создать
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };
@@ -908,7 +941,9 @@ const mapStateProps = (state) => {
     return { info };
 };
 
-const mapDispatchProps = (dispatch) => bindActionCreators({}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({
+    setModal,
+}, dispatch);
 
 export const CreateDocumentPage = connect(
     mapStateProps,
