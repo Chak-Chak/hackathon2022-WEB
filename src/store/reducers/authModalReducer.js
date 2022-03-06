@@ -15,7 +15,7 @@ const INITIAL_STATE = {
     isLoginValidationError: false,
     globalAlertList: [],
     requestLoginError: false,
-    modalVisible: true,
+    modalVisible: false,
     documentList: [],
 };
 

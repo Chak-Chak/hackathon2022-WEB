@@ -39,9 +39,7 @@ const mapStateProps = (state) => {
     return { info };
 };
 
-const mapDispatchProps = (dispatch) => bindActionCreators({
-    fetchGetDocumentList,
-}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({ fetchGetDocumentList }, dispatch);
 
 export const DocumentsPage = connect(
     mapStateProps,
