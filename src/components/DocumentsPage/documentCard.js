@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import {setSelectedDocumentId} from "../../store/actions/authModalActions";
+import {Redirect} from "react-router-dom";
 
-const DocumentCardLayout = ({ info, date, num }) => {
+const DocumentCardLayout = ({ id, info, date, num, setSelectedDocumentId }) => {
+    const [isRedirect, setIsRedirect] = useState(false);
+    if (isRedirect)
+        return<Redirect to="/documents/edit"/>
+    else
     return (
         <div className="card m-3" style={{ width: "22rem" }}>
             <div className="card-body">
@@ -54,6 +60,10 @@ const DocumentCardLayout = ({ info, date, num }) => {
                     <a
                         className="btn btn-outline-primary"
                         style={{ width: "48%" }}
+                        onClick={()=> {
+                            setIsRedirect(true)
+                            setSelectedDocumentId(id)
+                        }}
                     >
                         Изменить
                     </a>
@@ -66,7 +76,7 @@ const DocumentCardLayout = ({ info, date, num }) => {
                     </a>
                 </div>
                 <div>
-                    <a className="btn btn-outline-success w-100 mb-2">
+                    <a className="btn btn-outline-success w-100 mb-2" href={`http://cb94-204-157-128-236.ngrok.io/documents/download/${num}`}>
                         Скачать
                     </a>
                     <a className="btn btn-outline-success w-100 mb-2">
@@ -83,7 +93,7 @@ const mapStateProps = (state) => {
     return { info };
 };
 
-const mapDispatchProps = (dispatch) => bindActionCreators({}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({setSelectedDocumentId}, dispatch);
 
 export const DocumentCard = connect(
     mapStateProps,

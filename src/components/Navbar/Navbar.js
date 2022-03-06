@@ -17,6 +17,7 @@ import {
     updateGlobalAlertList,
     updateIsAuth,
 } from "../../store/actions/authModalActions";
+import {EditDocumentPage} from "../../Pages/EditDocumentPage";
 
 const NavbarLayout = ({ info, updateIsAuth, updateGlobalAlertList }) => {
     useEffect(() => {
@@ -64,6 +65,10 @@ const NavbarLayout = ({ info, updateIsAuth, updateGlobalAlertList }) => {
                     </nav>
                 </div>
                 <Switch>
+                    <Route
+                        path="/documents/edit"
+                        render={({ match }) => <EditDocumentPage />}
+                    />
                     <Route
                         path="/documents/create"
                         render={({ match }) => <CreateDocumentPage />}

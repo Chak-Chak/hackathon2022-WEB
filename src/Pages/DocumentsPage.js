@@ -18,9 +18,8 @@ const DocumentsPageLayout = ({ info, fetchGetDocumentList}) => {
         <div className="container d-flex justify-content-center align-items-center flex-wrap">
             {info.documentList.result!==undefined ?
                 info.documentList.result.map(document=>{
-                    console.log(document)
                     return(
-                        <DocumentCard num={document._1} date={document._2}/>
+                        <DocumentCard id={document.id} num={document._1} date={document._2}/>
                     )
                 })
                 :

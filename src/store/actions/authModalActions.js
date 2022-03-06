@@ -3,11 +3,21 @@ import {
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT, SET_DOCUMENT_LIST,
     SET_LOGIN_ROLE, SET_MODAL,
-    SET_REQUEST_LOGIN_ERROR,
+    SET_REQUEST_LOGIN_ERROR, SET_SELECTED_DOCUMENT, SET_SELECTED_DOCUMENT_ID,
     UPDATE_GLOBAL_ALERT_LIST,
     UPDATE_IS_AUTH,
     UPDATE_IS_LOGIN_LOADING, UPDATE_SELECTED_DOCUMENT_ID,
 } from "../types/authModalTypes";
+
+export const setSelectedDocument = (data) => ({
+    type: SET_SELECTED_DOCUMENT,
+    data
+})
+
+export const setSelectedDocumentId = (id) => ({
+    type: SET_SELECTED_DOCUMENT_ID,
+    id
+})
 
 export const setDocumentList = (list) => ({
     type: SET_DOCUMENT_LIST,
