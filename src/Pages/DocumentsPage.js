@@ -20,7 +20,7 @@ const DocumentsPageLayout = ({ info, fetchGetDocumentList}) => {
                 info.documentList.result.map(document=>{
                     //console.log(document)
                     return(
-                        <DocumentCard num={document._1} date={document._2}/>
+                        <DocumentCard id={document.id} num={document._1} date={document._2}/>
                     )
                 })
                 :

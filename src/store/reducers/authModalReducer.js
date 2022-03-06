@@ -3,7 +3,7 @@ import {
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT, SET_DOCUMENT_LIST,
     SET_LOGIN_ROLE, SET_MODAL,
-    SET_REQUEST_LOGIN_ERROR,
+    SET_REQUEST_LOGIN_ERROR, SET_SELECTED_DOCUMENT, SET_SELECTED_DOCUMENT_ID,
     UPDATE_GLOBAL_ALERT_LIST,
     UPDATE_IS_AUTH,
     UPDATE_IS_LOGIN_LOADING, UPDATE_SELECTED_DOCUMENT_ID,
@@ -19,10 +19,21 @@ const INITIAL_STATE = {
     modalVisible: false,
     documentList: [],
     selectedDocumentId: null,
+    selectedDocument: null,
 };
 
 export const authModalReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_SELECTED_DOCUMENT:
+            return {
+                ...state,
+                selectedDocument: action.data,
+            }
+        case SET_SELECTED_DOCUMENT_ID:
+            return {
+                ...state,
+                selectedDocumentId: action.id
+            }
         case SET_DOCUMENT_LIST:
             return {
                 ...state,
