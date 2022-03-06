@@ -1,4 +1,5 @@
 import {
+    FETCH_CREATE_DOCUMENT,
     FETCH_CREATE_TOKEN, FETCH_GET_DOCUMENT_BY_ID, FETCH_GET_DOCUMENT_LIST,
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT, SET_DOCUMENT_LIST,
@@ -71,4 +72,9 @@ export const fetchGetDocumentById = (id) => ({
 export const updateSelectedDocumentId = (id) => ({
     type: UPDATE_SELECTED_DOCUMENT_ID,
     id
+});
+
+export const fetchCreateDocument = (data) => ({
+    type: FETCH_CREATE_DOCUMENT,
+    data
 });

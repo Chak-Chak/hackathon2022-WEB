@@ -13,12 +13,12 @@ const DocumentsPageLayout = ({ info, fetchGetDocumentList}) => {
     if (!info.isAuth) {
         return <Redirect to="/" />;
     }
-    console.log(info.documentList.result)
+    //console.log(info.documentList.result)
     return (
         <div className="container d-flex justify-content-center align-items-center flex-wrap">
             {info.documentList.result!==undefined ?
                 info.documentList.result.map(document=>{
-                    console.log(document)
+                    //console.log(document)
                     return(
                         <DocumentCard num={document._1} date={document._2}/>
                     )

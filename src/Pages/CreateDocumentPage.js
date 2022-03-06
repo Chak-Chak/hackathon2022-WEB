@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import {setModal} from "../store/actions/authModalActions";
+import {fetchCreateDocument, setModal} from "../store/actions/authModalActions";
 import {Modal} from "../components/Modal/Modal";
 
-const CreateDocumentPageLayout = ({ info, setModal }) => {
+const CreateDocumentPageLayout = ({ info, setModal, fetchCreateDocument}) => {
     const [redirectBack, setRedirectBack] = useState(false);
     const [services, setServices] = useState([]);
     const [service, setService] = useState("");
@@ -90,6 +90,7 @@ const CreateDocumentPageLayout = ({ info, setModal }) => {
             },
             14: fourteen
         }
+        fetchCreateDocument(result);
         setRedirectBack(true);
     }
 
@@ -942,7 +943,7 @@ const mapStateProps = (state) => {
 };
 
 const mapDispatchProps = (dispatch) => bindActionCreators({
-    setModal,
+    setModal, fetchCreateDocument,
 }, dispatch);
 
 export const CreateDocumentPage = connect(
