@@ -2,13 +2,13 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-const DocumentCardLayout = ({ info }) => {
+const DocumentCardLayout = ({ info, date, num }) => {
     return (
         <div className="card m-3" style={{ width: "22rem" }}>
             <div className="card-body">
-                <h5 className="card-title">Контракт №12345</h5>
+                <h5 className="card-title">Контракт №{num}</h5>
                 <div className="card-text">
-                    <div className="h6">Дата создания: 05.03.2022</div>
+                    <div className="h6">Дата создания: {date}</div>
                 </div>
             </div>
             <ul className="list-group list-group-flush">

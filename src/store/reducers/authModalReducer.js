@@ -1,7 +1,7 @@
 import {
     FETCH_GET_DOCUMENT_LIST,
     IS_LOGIN_VALIDATION_ERROR,
-    REMOVE_GLOBAL_ALERT,
+    REMOVE_GLOBAL_ALERT, SET_DOCUMENT_LIST,
     SET_LOGIN_ROLE, SET_MODAL,
     SET_REQUEST_LOGIN_ERROR,
     UPDATE_GLOBAL_ALERT_LIST,
@@ -21,6 +21,11 @@ const INITIAL_STATE = {
 
 export const authModalReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_DOCUMENT_LIST:
+            return {
+                ...state,
+                documentList: action.list
+            }
         case SET_MODAL:
             return {
                 ...state,

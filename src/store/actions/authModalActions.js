@@ -1,13 +1,18 @@
 import {
     FETCH_CREATE_TOKEN, FETCH_GET_DOCUMENT_LIST,
     IS_LOGIN_VALIDATION_ERROR,
-    REMOVE_GLOBAL_ALERT,
+    REMOVE_GLOBAL_ALERT, SET_DOCUMENT_LIST,
     SET_LOGIN_ROLE, SET_MODAL,
     SET_REQUEST_LOGIN_ERROR,
     UPDATE_GLOBAL_ALERT_LIST,
     UPDATE_IS_AUTH,
     UPDATE_IS_LOGIN_LOADING,
 } from "../types/authModalTypes";
+
+export const setDocumentList = (list) => ({
+    type: SET_DOCUMENT_LIST,
+    list
+})
 
 export const setModal = (value) => ({
     type: SET_MODAL, value
