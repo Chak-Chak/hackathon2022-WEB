@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { DocumentCard } from "../components/DocumentsPage/documentCard";
+import {fetchGetDocumentList} from "../store/actions/authModalActions";
 
-const DocumentsPageLayout = ({ info }) => {
+const DocumentsPageLayout = ({ info, fetchGetDocumentList}) => {
+    useEffect(() => {
+        fetchGetDocumentList();
+        console.log("hello", fetchGetDocumentList);
+    }, []);
     if (!info.isAuth) {
         return <Redirect to="/" />;
     }
@@ -32,7 +37,7 @@ const DocumentsPageLayout = ({ info }) => {
 
 const mapStateProps = (state) => {
     const info = state.authModalReducer;
-    return { info };
+    return { info, fetchGetDocumentList };
 };
 
 const mapDispatchProps = (dispatch) => bindActionCreators({}, dispatch);

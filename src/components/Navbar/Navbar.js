@@ -22,7 +22,7 @@ const NavbarLayout = ({ info, updateIsAuth, updateGlobalAlertList }) => {
     useEffect(() => {
         if (localStorage.getItem("accessToken") !== null) updateIsAuth(true);
     }, []);
-    console.log(info);
+    //console.log(info);
     return (
         <div>
             <Router>

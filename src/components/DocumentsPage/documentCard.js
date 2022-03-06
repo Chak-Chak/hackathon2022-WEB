@@ -7,9 +7,9 @@ const DocumentCardLayout = ({ info }) => {
         <div className="card m-3" style={{ width: "22rem" }}>
             <div className="card-body">
                 <h5 className="card-title">Контракт №12345</h5>
-                <p className="card-text">
-                    <h6>Дата создания: 05.03.2022</h6>
-                </p>
+                <div className="card-text">
+                    <div className="h6">Дата создания: 05.03.2022</div>
+                </div>
             </div>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item">

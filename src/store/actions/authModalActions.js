@@ -1,5 +1,5 @@
 import {
-    FETCH_CREATE_TOKEN,
+    FETCH_CREATE_TOKEN, FETCH_GET_DOCUMENT_LIST,
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT,
     SET_LOGIN_ROLE, SET_MODAL,
@@ -52,4 +52,8 @@ export const removeGlobalAlert = (id) => ({
 export const setRequestLoginError = (value) => ({
     type: SET_REQUEST_LOGIN_ERROR,
     value,
+});
+
+export const fetchGetDocumentList = () => ({
+    type: FETCH_GET_DOCUMENT_LIST,
 });
