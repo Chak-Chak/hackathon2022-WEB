@@ -1,4 +1,5 @@
 import {
+    FETCH_GET_DOCUMENT_LIST,
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT,
     SET_LOGIN_ROLE,
@@ -8,12 +9,13 @@ import {
     UPDATE_IS_LOGIN_LOADING,
 } from "../types/authModalTypes";
 const INITIAL_STATE = {
-    isAuth: true,
+    isAuth: false,
     userRole: null,
     isLoginLoading: false,
     isLoginValidationError: false,
     globalAlertList: [],
     requestLoginError: false,
+    documentList: [],
 };
 
 export const authModalReducer = (state = INITIAL_STATE, action) => {
