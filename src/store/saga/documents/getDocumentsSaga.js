@@ -8,7 +8,7 @@ const request = () => {
         redirect: 'follow'
     };
 
-    return fetch("https://localhost:5001/documents/all", requestOptions);
+    return fetch("http://cb94-204-157-128-236.ngrok.io/documents/all", requestOptions);
 };
 
 function* fetchGetList() {
