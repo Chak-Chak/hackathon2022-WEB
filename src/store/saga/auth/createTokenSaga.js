@@ -31,7 +31,6 @@ const fetchCreateToken = (roleId, password) => {
 
 function* fetchTokenCreateWorker(info) {
     yield put(updateIsLoginLoading(true));
-    console.log(info.userRole);
     const data = yield call(fetchCreateToken, info.userRole, info.password);
     if (data) {
         const json = yield call(() => new Promise((res) => res(data.json())));

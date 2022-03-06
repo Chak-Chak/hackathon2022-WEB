@@ -8,7 +8,6 @@ import {fetchGetDocumentList} from "../store/actions/authModalActions";
 const DocumentsPageLayout = ({ info, fetchGetDocumentList}) => {
     useEffect(() => {
         fetchGetDocumentList();
-        console.log("hello", fetchGetDocumentList);
     }, []);
     if (!info.isAuth) {
         return <Redirect to="/" />;
@@ -37,10 +36,12 @@ const DocumentsPageLayout = ({ info, fetchGetDocumentList}) => {
 
 const mapStateProps = (state) => {
     const info = state.authModalReducer;
-    return { info, fetchGetDocumentList };
+    return { info };
 };
 
-const mapDispatchProps = (dispatch) => bindActionCreators({}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({
+    fetchGetDocumentList,
+}, dispatch);
 
 export const DocumentsPage = connect(
     mapStateProps,
