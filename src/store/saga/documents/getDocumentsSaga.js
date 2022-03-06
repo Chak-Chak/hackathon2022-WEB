@@ -13,10 +13,8 @@ const request = () => {
 
 function* fetchGetList() {
     const data = yield call(request);
-    console.log(data);
     if (data) {
         const json = yield call(() => new Promise((res) => res(data.json())));
-        console.log(json);
     } else {
         yield put(
             updateGlobalAlertList({

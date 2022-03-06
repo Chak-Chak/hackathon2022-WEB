@@ -1,12 +1,12 @@
 import {
-    FETCH_CREATE_TOKEN, FETCH_GET_DOCUMENT_LIST,
+    FETCH_CREATE_TOKEN, FETCH_GET_DOCUMENT_BY_ID, FETCH_GET_DOCUMENT_LIST,
     IS_LOGIN_VALIDATION_ERROR,
     REMOVE_GLOBAL_ALERT,
     SET_LOGIN_ROLE, SET_MODAL,
     SET_REQUEST_LOGIN_ERROR,
     UPDATE_GLOBAL_ALERT_LIST,
     UPDATE_IS_AUTH,
-    UPDATE_IS_LOGIN_LOADING,
+    UPDATE_IS_LOGIN_LOADING, UPDATE_SELECTED_DOCUMENT_ID,
 } from "../types/authModalTypes";
 
 export const setModal = (value) => ({
@@ -56,4 +56,14 @@ export const setRequestLoginError = (value) => ({
 
 export const fetchGetDocumentList = () => ({
     type: FETCH_GET_DOCUMENT_LIST,
+});
+
+export const fetchGetDocumentById = (id) => ({
+   type: FETCH_GET_DOCUMENT_BY_ID,
+   id
+});
+
+export const updateSelectedDocumentId = (id) => ({
+    type: UPDATE_SELECTED_DOCUMENT_ID,
+    id
 });

@@ -6,8 +6,9 @@ import {
     SET_REQUEST_LOGIN_ERROR,
     UPDATE_GLOBAL_ALERT_LIST,
     UPDATE_IS_AUTH,
-    UPDATE_IS_LOGIN_LOADING,
+    UPDATE_IS_LOGIN_LOADING, UPDATE_SELECTED_DOCUMENT_ID,
 } from "../types/authModalTypes";
+import {updateSelectedDocumentId} from "../actions/authModalActions";
 const INITIAL_STATE = {
     isAuth: true,
     userRole: null,
@@ -17,6 +18,7 @@ const INITIAL_STATE = {
     requestLoginError: false,
     modalVisible: false,
     documentList: [],
+    selectedDocumentId: null,
 };
 
 export const authModalReducer = (state = INITIAL_STATE, action) => {
@@ -70,6 +72,11 @@ export const authModalReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 requestLoginError: action.value,
+            };
+        case UPDATE_SELECTED_DOCUMENT_ID:
+            return {
+                ...state,
+                selectedDocumentId: action.value,
             };
         default:
             return state;
